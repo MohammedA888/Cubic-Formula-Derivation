@@ -1,0 +1,111 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+
+\title{The Cubic Formula}
+\author{Mohammed Abdulrahman}
+\date{August 2018}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction} We have a complete cubic polynomial in the form $P(x)=ax^3+bx^2+cx+d$, that has the property of crossing the $x$ axis at only one instance. It is our wish to determine the $x$ value at this intersection.
+
+\subsection{Approach} To solve for the general value of $x$ in this polynomial, we shall use a series of substitutions to first transform $P(x)$ from a complete cubic polynomial into a depressed cubic in the form $G(t)=at^3+pt+q$, then to another polynomial in the form $H(m)=am^6+qm^3+u$. After that, we can transform $H(m)$ into the simple quadratic $I(n)=an^2+qn+u$, and easily solve for the values of $n$ that cause $I(n)=0$, and all that is left is to back substitute until a general solution in terms of $a$, $b$, $c$, and $d$ is available. 
+
+\section{$P(x)$ \longrightarrow G(t)}
+
+\begin{equation}
+\begin{aligned}
+    P(x)&=ax^3+bx^2+cx+d
+\end{aligned}
+\end{equation}\\
+Make the substitution $x=t+\omega$, where $\omega$ is a determinable constant that is required to transform the complete cubic into a depressed one.
+\begin{equation}
+\begin{aligned}
+    G(t)&=a(t+\omega)^3+b(t+\omega)^2+c(t+\omega)+d\\
+& = at^3+3at^2w+3atw^2+aw^3+bt^2+2bt\omega+b\omega^2+c\omega+d\\
+& = at^3+t^2(3a\omega+b)+t(3a\omega^2+2b\omega+c)+(a\omega^3+b\omega^2+c\omega+d)\\
+\end{aligned}
+\end{equation}
+It is obvious that the only way to make the cubic a depressed one is to have $\omega=-\frac{b}{3a}$, so substituting for this yields:\\
+\begin{equation}
+\begin{aligned}
+    G(t)&=at^3+t[3a(-\frac{b}{3a})^2+2b(-\frac{b}{3a})+c]+[a(-\frac{b}{3a})^3+b(-\frac{b}{3a})^2+c(-\frac{b}{3a})+d]\\
+& = at^3+t[\frac{b^2}{3a}-\frac{2b^2}{3a}+c]+[-\frac{b^3}{27a^2}+\frac{b^3}{9a^2}-\frac{bc}{3a}+d]\\
+& = at^3+t[\frac{3ac-b^2}{3a}]+[\frac{2b^3+27a^2d-9abc}{27a^2}]
+\end{aligned}
+\end{equation}
+To finalize the transformation of $P(x)$ into $G(t)$, simply substitute $p=\frac{3ac-b^2}{3a}$ and $q=\frac{2b^3+27a^2d-9abc}{27a^2}$. Therefore, $G(t)=at^3+pt+q$.
+
+\section{$G(t)$ \longrightarrow H(m)}
+
+\begin{equation}
+\begin{aligned}
+    G(t)&=at^3+px+q
+\end{aligned}
+\end{equation}\\
+Making the substitution $t=m+\frac{\lambda}{m}$, were $\lambda$ is another determinable constant that is required to transform $G(t)$ into $H(m)$, a quadratic in disguise.\\  
+\begin{equation}
+\begin{aligned}
+    H(m)&=a(m+\frac{\lambda}{m})^3+p(m+\frac{\lambda}{m})+q\\
+& = am^3+3a\lambda m+\frac{3a\lambda^2}{m}+\frac{a\lambda^3}{m^3}+pm+\frac{p\lambda}{m}+q\\
+& = am^3+m(3a\lambda +p)+q+\frac{1}{m}(3a\lambda^2+p\lambda)+\frac{a\lambda^3}{m^3}
+\end{aligned}
+\end{equation}
+We multiply by $m^3$ in order to eliminate the rationals, and revert $H(m)$ back into polynomial form.
+\begin{equation}
+\begin{aligned}
+    H(m)&=am^6+m^4(3a\lambda +p)+qm^3+m^2(3a\lambda^2+p\lambda)+a\lambda^3
+\end{aligned}
+\end{equation}
+To get $H(m)$ into the desired form $am^6+qm^3+u$ we must eliminate the $m^4$ and $m^2$ terms, which may be done with the substitution $\lambda=-\frac{p}{3a}$, so substituting for this yields:\\
+\begin{equation}
+\begin{aligned}
+    H(m)&=am^6+qm^3+a(-\frac{p}{3a})^3\\
+& = am^6+qm^3-\frac{p^3}{27a^2}\\
+\end{aligned}
+\end{equation}
+Substitute $u=-\frac{p^3}{27a^2}$, and the desired form $H(m)=am^6+qm^3+u$ has been achieved.
+
+\section{$H(m)$ \longrightarrow I(n)}
+
+Now make the substitution $n=m^3$, and it is observed that the new polynomial $I(n)$ is simply a quadratic! From here, all that is required is to solve for the zeros of the quadratic, then back substitute until the solution is in terms of $a$, $b$, $c$, and $d$.
+\begin{equation}
+\begin{aligned}
+n=&\frac{-q\pm \sqrt{q^2-4au}}{2a}\\
+\end{aligned}
+\end{equation}
+
+\section{Back Substitution}
+
+Finally, we can begin to substitute backwards, beginning with $m=\sqrt[3]{n}$.
+\begin{equation}
+\begin{aligned}
+m=&\sqrt[3]{\frac{-q\pm \sqrt{q^2-4au}}{2a}}\\
+& = \sqrt[3]{\frac{-(\frac{2b^3+27a^2d-9abc}{27a^2})\pm \sqrt{(\frac{2b^3+27a^2d-9abc}{27a^2})^2-4a(-\frac{p^3}{27a^2})}}{2a}}\\
+& = \sqrt[3]{\frac{\frac{9abc-2b^3-27a^2d}{27a^2}\pm \sqrt{\frac{(2b^3+27a^2d-9abc)^2}{729a^2}+\frac{4(\frac{3ac-b^2}{3a})^3}{27a}}}{2a}}\\
+& = \sqrt[3]{\frac{\frac{9abc-2b^3-27a^2d}{27a^2}\pm \sqrt{\frac{(2b^3+27a^2d-9abc)^2+4(3ac-b^2)^3}{729a^2}}}{2a}}\\
+& = \sqrt[3]{\frac{9abc-2b^3-27a^2d\pm \sqrt{(2b^3+27a^2d-9abc)^2+4(3ac-b^2)^3}}{54a^3}}\\
+& = \frac{\sqrt[3]{9abc-2b^3-27a^2d\pm \sqrt{(2b^3+27a^2d-9abc)^2+4(3ac-b^2)^3}}}{3a\sqrt[3]{2}}\\ \\
+\end{aligned}
+\end{equation}
+Substitute $t=m+\frac{\lambda}{m}$, $\gamma=\sqrt[3]{9abc-2b^3-27a^2d\pm \sqrt{(2b^3+27a^2d-9abc)^2+4(3ac-b^2)^3}}$:
+\begin{equation}
+\begin{aligned}
+t&=m+\frac{\lambda}{m}\\
+& = (\frac{\gamma}{3a\sqrt[3]{2}})+\frac{(-\frac{p}{3a})}{(\frac{\gamma}{3a\sqrt[3]{2}})}\\
+& = \frac{\gamma}{3a\sqrt[3]{2}}-\frac{\sqrt[3]{2}(\frac{3ac-b^2}{3a})}{\gamma}\\
+& = \frac{\gamma}{3a\sqrt[3]{2}}-\frac{\sqrt[3]{2}(3ac-b^2)}{3a\gamma}
+\end{aligned}
+\end{equation}
+Recall that $x=t+\omega$, so:
+\begin{equation}
+\begin{aligned}
+x&=t+\omega\\
+& = (\frac{\gamma}{3a\sqrt[3]{2}}-\frac{\sqrt[3]{2}(3ac-b^2)}{3a\gamma})+(-\frac{b}{3a})\\
+& = \frac{\sqrt[3]{4}\gamma^2-\sqrt[3]{16}(3ac-b^2)-2b\gamma}{6a\gamma}\\
+\end{aligned}
+\end{equation}
+The above statement, when all pertinent $a$, $b$, $c$, and $d$ values are plugged in, will provide the $x$ value for which the cubic polynomial $P(x)$ intersects the $x$ axis. Further analysis into the roots of unity may be required in order to determine the imaginary roots of said $P(x)$, however that is a proof left as an exercise to the reader.
+\end{document}
